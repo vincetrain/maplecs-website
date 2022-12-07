@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { NavLink as Link } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 
 import './Navbar.css';
 
@@ -7,9 +7,9 @@ function Navbar() {
     const [sticky, setSticky] = useState('relative');
 
     const handleScroll = () => {
-        const position = window.pageYOffset;
-
-        if (position > 15) {
+        let position = window.pageYOffset;
+        console.log('worked: ' + position);
+        if (position > 1) {
             setSticky('sticky');
         }
         else {
@@ -34,15 +34,15 @@ function Navbar() {
                 </Link>
             </div>
             <ul classname='navbar-list'>
-                <Link to='/'>Home</Link>
+                <NavLink exact={true} to='/' activeClassName='active'>Home</NavLink>
                 <span className='navbar-divider'/>
-                <Link to='coding101'>Coding 101</Link>
-                <span className='navbar-divider'/>
-                <Link to='gamedev'>Game Development</Link>
-                <span className='navbar-divider'/>
-                <Link to='ethicalhacking'>Ethical Hacking</Link>
-                <span className='navbar-divider'/>
-                <Link to='other'>Other</Link>
+                <NavLink exact={true} to='/coding101' activeClassName='active'>Coding 101</NavLink>
+                <span className='navbar-divider' />
+                <NavLink exact={true} to='/gamedev' activeClassName='active'>Game Development</NavLink>
+                <span className='navbar-divider' />
+                <NavLink exact={true} to='/ethicalhacking' activeClassName='active'>Ethical Hacking</NavLink>
+                <span className='navbar-divider' />
+                <NavLink exact={true} to='/other' activeClassName='active'>Other</NavLink>
             </ul>
         </div>
     )
